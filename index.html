@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/master.css">
+    <link rel="stylesheet" href="assets/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <main>
+        <!-- start bottomFixedImage -->
+    <div class="bottomImage">
+        <figure class="imgFixed"><img src="assets/img/img/4.jpg" alt="">
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="https://github.com/zohreFaraji"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/zohre-faraji-41822315a/"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/zohrefaraji212/"><i class="bi bi-instagram"></i></a>
+        </figure>
+    </div>
+    <!-- end bottomFixedImage -->
+        <form>
+            <div class="head">
+                <h3>JavaScript Captcha</h3>
+            </div>
+            <div class="captFlex">
+                <span>X 2 p W Z h</span>
+                <button><img src="assets/img/1.png" alt=""></button>
+            </div>
+            <input type="text" placeholder="Enter Captcha">
+            <div class="btn"><button type="submit">submit</button></div>
+
+            <div class="pop hide">
+                <div><img src="assets/img/check.png" alt=""></div>
+                <h2>Nice!</h2>
+                <p>You don't appear to be a robot.</p>
+                <div class="btn"><button>ok</button></div>
+            </div>
+            <div class="popOops hide">
+                <div><img src="assets/img/22.png" alt=""></div>
+                <h2>Oops...</h2>
+                <p>Captcha not matched. Please try again!</p>
+                <div class="btn"><button>ok</button></div>
+            </div>
+        </form>
+    </main>
+    <script>
+        let randNum = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+            'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
+            'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+            't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+        ];
+
+        const box = document.querySelector('.captFlex>span');
+        const btn = document.querySelector('.captFlex>button');
+        const input = document.querySelector('input');
+        const pop = document.querySelector('.pop');
+        const popOops = document.querySelector('.popOops');
+        const submit = document.querySelector('.btn>button');
+
+        btn.addEventListener('click', myFunc);
+
+        function myFunc(e) {
+            e.preventDefault();
+            let txt = '';
+            for (let i = 0; i < 6; i++) {
+                txt += randNum[Math.floor(Math.random() * randNum.length)] + ' ';
+            }
+            box.innerHTML = txt;
+        }
+
+        submit.addEventListener('click', (e) => {
+            e.preventDefault();
+            let captcha = box.innerHTML.split(" ").join("");
+            if (captcha === input.value) {
+                pop.classList.remove('hide');
+            } else {
+                popOops.classList.remove('hide');
+            }
+
+        });
+    </script>
+</body>
+
+</html>
